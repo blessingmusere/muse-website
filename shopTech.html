@@ -18,13 +18,19 @@
 <body>
 
     <header>
-        <div class="logo" style="cursor: pointer;" onclick="window.location.href='index.html'">MUSE</div>
+        <div class="site-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
+            <img 
+                src="images/muse logo1 (8).png"
+                alt="MUSE Logo"
+                class="site-logo"
+            >
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shopTech.html" class="active">Shop</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <!--<li><a href="contact.html">Contact</a></li>-->
                 <li>
                     <a href="cart.html" class="cart-link">
                         <span>View Cart</span>
@@ -42,19 +48,19 @@
         <div class="row g-4">
 
             <!-- AirPods Pro 2nd Gen -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="airpods-pro-2nd-gen" data-product-name="AirPods Pro (2nd Generation)">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="airpods-pro-2nd-gen" data-product-name="AirPods Pro (2nd Gen)">
 
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/Blue White Modern Earbuds A4 (Landscape) (2).png" class="card-img-top" alt="AirPods Pro 2nd Gen">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">AirPods Pro (2nd Generation)</h5>
+                        <h5 class="card-text">AirPods Pro (2nd Generation)</h5>
 
-                        <p class="card-text text-muted small">
+                        <p class="card-text text-muted small" >
                             Active noise cancellation, premium sound, and a secure fit. High demand.
                         </p>
 
-                        <div class="fw-bold mb-3">$12</div>
+                        <div class="card-text price">$12</div>
 
                         <a   
                         class="btn btn-primary mt-auto w-100 order-btn" data-product-id="airpods-pro-2nd-gen">
@@ -65,19 +71,19 @@
             </div>
 
             <!-- AirPods 3rd Gen -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="airpods-pro-3rd-gen" data-product-name="AirPods (3rd Generation)">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="airpods-pro-3rd-gen" data-product-name="AirPods (3rd Gen)">
 
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/Blue White Modern Earbuds A4 (Landscape) (2).png" class="card-img-top" alt="AirPods 3rd Gen">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">AirPods (3rd Generation)</h5>
+                        <h5 class="card-text">AirPods (3rd Generation)</h5>
 
                         <p class="card-text text-muted small">
                             Clear audio, comfortable fit, and reliable everyday performance.
                         </p>
 
-                        <div class="fw-bold mb-3">$15</div>
+                        <div class="card-text">$15</div>
 
                         <a class="btn btn-primary mt-auto w-100 order-btn" data-product-id="airpods-pro-3rd-gen">
                         Add to cart
@@ -87,19 +93,19 @@
             </div>
 
             <!-- 65W Charger -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="65w-fast-charger" data-product-name="65W GaN Fast Charger">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="65w-fast-charger" data-product-name="65W GaN Fast Charger">
 
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/Blue White Modern Earbuds A4 (Landscape) (3).png" class="card-img-top" alt="65W Fast Charger">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">65W Fast Charger</h5>
+                        <h5 class="card-text">65W Fast Charger</h5>
 
                         <p class="card-text text-muted small">
                             Fast charging for phones, tablets, and laptops. One charger, many devices.
                         </p>
 
-                        <div class="fw-bold mb-3">12.00</div>
+                        <div class="card-text">12.00</div>
 
                         <a class="btn btn-primary mt-auto w-100 order-btn" data-product-id="65w-fast-charger">
                         Add to cart
@@ -109,19 +115,19 @@
             </div>
 
             <!-- Power Bank -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="power-bank" data-product-name="Power Bank">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="power-bank" data-product-name="Power Bank">
 
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/powerbank.jpg" class="card-img-top" alt="Power Bank">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Power Banks</h5>
+                        <h5 class="card-text">Power Bank</h5>
 
                         <p class="card-text text-muted small">
                             Reliable backup power for travel, work, and daily use.
                         </p>
 
-                        <div class="fw-bold mb-3">$25</div>
+                        <div class="card-text ">$25</div>
 
                         <a  
                         class="btn btn-primary mt-auto w-100 order-btn" data-product-id="power-bank">
@@ -132,18 +138,18 @@
             </div>
 
             <!-- USB-C Cable -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="usb-c-cable" data-product-name="USB-C Charging Cable">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="usb-c-cable" data-product-name="USB-C Charging Cable">
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/usbcable.jpg" class="card-img-top" alt="USB-C Cable">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">USB-C Charging Cable</h5>
+                        <h5 class="card-text">USB-C Charging Cable</h5>
 
                         <p class="card-text text-muted small">
                             Durable cable with stable power delivery. Built for daily use.
                         </p>
 
-                        <div class="fw-bold mb-3">$2.00</div>
+                        <div class="card-text">$2.00</div>
 
                         <a 
                         class="btn btn-primary mt-auto w-100 order-btn" data-product-id="usb-c-cable">
@@ -154,18 +160,18 @@
             </div>
 
             <!-- Flash Drive -->
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="flash-drive" data-product-name="Flash Drive">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="flash-drive" data-product-name="Flash Drive">
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
 
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Flash Drives</h5>
+                        <h5 class="card-text">Flash Drives</h5>
 
                         <p class="card-text text-muted small">
                             Simple, reliable storage for documents, media, and backups.
                         </p>
 
-                        <div class="fw-bold mb-3">$10</div>
+                        <div class="card-text">$10</div>
 
                         <a  
                         class="btn btn-primary mt-auto w-100 order-btn" data-product-id="flash-drive">
@@ -175,7 +181,8 @@
                 </div>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="product-addmore-1" data-product-name="addmore">
+            
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-1" data-product-name="addmore">
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
 
@@ -196,7 +203,90 @@
                 </div>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-3" data-product-id="product-addmore-2" data-product-name="addmore">
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-2" data-product-name="addmore">
+                <div class="card h-100 border-0 shadow-sm product-card-modern">
+                    <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">addmore</h5>
+
+                        <p class="card-text text-muted small">
+                            Simple, reliable storage for documents, media, and backups.
+                        </p>
+
+                        <div class="fw-bold mb-3">$10</div>
+
+                        <a  
+                        class="btn btn-primary mt-auto w-100 order-btn" data-product-id="product-addmore-2">
+                        Add to cart
+                    </a>
+                    </div>
+                </div>
+            </div>
+            <!--Hidden Products-->
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-2" data-product-name="addmore">
+                <div class="card h-100 border-0 shadow-sm product-card-modern">
+                    <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">addmore</h5>
+
+                        <p class="card-text text-muted small">
+                            Simple, reliable storage for documents, media, and backups.
+                        </p>
+
+                        <div class="fw-bold mb-3">$10</div>
+
+                        <a  
+                        class="btn btn-primary mt-auto w-100 order-btn" data-product-id="product-addmore-2">
+                        Add to cart
+                    </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-2" data-product-name="addmore">
+                <div class="card h-100 border-0 shadow-sm product-card-modern">
+                    <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">addmore</h5>
+
+                        <p class="card-text text-muted small">
+                            Simple, reliable storage for documents, media, and backups.
+                        </p>
+
+                        <div class="fw-bold mb-3">$10</div>
+
+                        <a  
+                        class="btn btn-primary mt-auto w-100 order-btn" data-product-id="product-addmore-2">
+                        Add to cart
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-2" data-product-name="addmore">
+                <div class="card h-100 border-0 shadow-sm product-card-modern">
+                    <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">addmore</h5>
+
+                        <p class="card-text text-muted small">
+                            Simple, reliable storage for documents, media, and backups.
+                        </p>
+
+                        <div class="fw-bold mb-3">$10</div>
+
+                        <a  
+                        class="btn btn-primary mt-auto w-100 order-btn" data-product-id="product-addmore-2">
+                        Add to cart
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-product-id="product-addmore-2" data-product-name="addmore">
                 <div class="card h-100 border-0 shadow-sm product-card-modern">
                     <img src="images/flashdrive.jpg" class="card-img-top" alt="Flash Drive">
 
@@ -218,12 +308,69 @@
             </div>
 
         </div>
+        <div class="text-center mt-4">
+            <button id="toggleProductsBtn" class="btn btn-outline-dark px-4 view-more-btn" type="button">
+              View more
+            </button>
+          </div>
+          
     </section>
 
     <footer>
         <p>&copy; 2025 MUSE. Built for quality.</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const items = Array.from(document.querySelectorAll(".product-item"));
+          const btn = document.getElementById("toggleProductsBtn");
+      
+          if (!items.length || !btn) return;
+      
+          let expanded = false;
+      
+          function visibleCountForTwoRows() {
+            const w = window.innerWidth;
+      
+            // Bootstrap breakpoints: md=768, lg=992
+            // Your grid: col-6 (2/row), col-md-4 (3/row), col-lg-3 (4/row)
+            if (w >= 992) return 8;   // 4 per row * 2 rows
+            if (w >= 768) return 6;   // 3 per row * 2 rows
+            return 4;                 // 2 per row * 2 rows
+          }
+      
+          function applyLimit() {
+            const limit = visibleCountForTwoRows();
+      
+            items.forEach((el, idx) => {
+              if (expanded) {
+                el.classList.remove("is-hidden");
+              } else {
+                el.classList.toggle("is-hidden", idx >= limit);
+              }
+            });
+      
+            // Only show button if there is something to expand
+            const shouldShowBtn = items.length > limit;
+            btn.style.display = shouldShowBtn ? "" : "none";
+            btn.textContent = expanded ? "View less" : "View more";
+          }
+      
+          btn.addEventListener("click", () => {
+            expanded = !expanded;
+            applyLimit();
+          });
+      
+          window.addEventListener("resize", () => {
+            // When resizing, re-apply the correct 2-row limit (unless expanded)
+            applyLimit();
+          });
+      
+          applyLimit();
+        });
+      </script>
+      
+      
 </body>
 
 </html>

@@ -1,0 +1,1966 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MUSE — Shop</title>
+  <meta name="description" content="MUSE Shop: Thrifts, Collaborations, and a Custom Design Studio." />
+
+  <style>
+    :root{
+      --bg0:#07080b;
+      --bg1:#0b0d10;
+      --panel:#10141a;
+      --panel2:#0d1116;
+      --text:#e9eef5;
+      --muted:#a9b3c1;
+      --line:rgba(255,255,255,.085);
+      --shadow: 0 24px 70px rgba(0,0,0,.55);
+      --radius: 20px;
+      --radius2: 14px;
+
+      --accent:#7c5cff;  /* violet */
+      --accent2:#2ee59d; /* mint */
+      --danger:#ff4d6d;
+
+      --max: 1240px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 18% -10%, rgba(124,92,255,.25), transparent 55%),
+        radial-gradient(850px 520px at 85% 10%, rgba(46,229,157,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      letter-spacing:.1px;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    ::selection{background: rgba(124,92,255,.35)}
+    .container{max-width:var(--max); margin:0 auto; padding:28px 18px 90px}
+
+    /* ---------- Topbar ---------- */
+    .topbar{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(11,13,16,.85), rgba(11,13,16,.55));
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:220px;
+    }
+    .logo{
+      width:40px; height:40px;
+      border-radius:14px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.18), transparent 60%),
+        radial-gradient(18px 18px at 70% 70%, rgba(255,255,255,.12), transparent 60%),
+        linear-gradient(135deg, rgba(124,92,255,.9), rgba(46,229,157,.75));
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.28em;
+      font-weight:700;
+      line-height:1.1;
+    }
+    .brand .sub{
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.12em;
+      margin-top:3px;
+    }
+
+    .nav{
+      display:flex; align-items:center; gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .chip{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition: .18s ease;
+    }
+    .chip:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.16); color:var(--text)}
+    .chip.active{
+      color:var(--text);
+      border-color: rgba(124,92,255,.5);
+      background: linear-gradient(135deg, rgba(124,92,255,.12), rgba(46,229,157,.08));
+    }
+
+    .actions{
+      display:flex; align-items:center; gap:10px;
+      min-width:220px;
+      justify-content:flex-end;
+    }
+    .search{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      width: min(360px, 48vw);
+    }
+    .search svg{opacity:.75}
+    .search input{
+      width:100%;
+      border:0;
+      outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:13px;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 12px;
+      cursor:pointer;
+      transition: .18s ease;
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.16)}
+    .btn.primary{
+      border-color: rgba(124,92,255,.45);
+      background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(46,229,157,.10));
+    }
+    .badge{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:18px; height:18px;
+      padding:0 6px;
+      border-radius:999px;
+      font-size:11px;
+      background: rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      margin-top:26px;
+      border:1px solid var(--line);
+      border-radius:calc(var(--radius) + 6px);
+      background:
+        radial-gradient(900px 500px at 25% 0%, rgba(124,92,255,.22), transparent 55%),
+        radial-gradient(700px 450px at 85% 60%, rgba(46,229,157,.12), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{
+      padding:28px 24px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:20px;
+      align-items:center;
+    }
+    .kicker{
+      font-family:var(--mono);
+      color:var(--muted);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+    .title{
+      margin:10px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.05;
+      letter-spacing:.02em;
+    }
+    .lead{
+      margin:0;
+      color:rgba(233,238,245,.82);
+      font-size:14px;
+      line-height:1.7;
+      max-width:60ch;
+    }
+    .hero-cta{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .hero-right{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding:16px;
+      background: rgba(0,0,0,.18);
+    }
+    .hero-right h3{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .hero-metrics{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .metric{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      padding:12px;
+    }
+    .metric .num{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .metric .lbl{
+      margin-top:4px;
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-family:var(--mono);
+    }
+
+    /* ---------- Layout grid ---------- */
+    .grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar{
+      position:sticky;
+      top:86px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+    }
+    .side-head{
+      padding:14px 14px 12px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+    }
+    .side-head .cap{
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-family:var(--mono);
+      margin-bottom:6px;
+    }
+    .side-head .big{
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .side-body{padding:12px 14px 14px}
+    .filter{
+      margin:10px 0 14px;
+    }
+    .filter label{
+      display:block;
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-family:var(--mono);
+      margin-bottom:8px;
+    }
+    .filter select, .filter input[type="range"]{
+      width:100%;
+    }
+    select{
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding:10px 10px;
+      outline:none;
+    }
+    .range-row{
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px;
+      font-size:12px;
+      color:var(--muted);
+      font-family:var(--mono);
+    }
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px}
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      cursor:pointer;
+      transition:.18s ease;
+      user-select:none;
+    }
+    .pill:hover{transform: translateY(-1px); color:var(--text); border-color: rgba(255,255,255,.16)}
+    .pill.on{
+      color:var(--text);
+      border-color: rgba(46,229,157,.5);
+      background: rgba(46,229,157,.10);
+    }
+
+    /* ---------- Main sections ---------- */
+    .section{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+      margin-bottom:18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.22);
+    }
+    .section-head{
+      padding:16px 18px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+    }
+    .section-title{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .section-sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+      max-width:70ch;
+      font-family:var(--mono);
+      letter-spacing:.06em;
+    }
+    .section-body{padding:18px}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns: 1fr}
+      .grid{grid-template-columns: 1fr}
+      .sidebar{position:relative; top:auto}
+      .cards{grid-template-columns: repeat(2, 1fr)}
+    }
+    @media (max-width: 560px){
+      .cards{grid-template-columns: 1fr}
+      .actions{min-width:auto}
+      .brand{min-width:auto}
+      .search{display:none}
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.085);
+      background: rgba(0,0,0,.22);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      transition: .18s ease;
+      display:flex;
+      flex-direction:column;
+      min-height: 320px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.16);
+    }
+    .media{
+      height:160px;
+      background:
+        radial-gradient(160px 140px at 20% 30%, rgba(124,92,255,.28), transparent 65%),
+        radial-gradient(220px 160px at 80% 80%, rgba(46,229,157,.16), transparent 65%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position:relative;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .media .tag{
+      position:absolute; left:12px; top:12px;
+      font-size:11px;
+      font-family:var(--mono);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:rgba(233,238,245,.85);
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 9px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+    }
+    .media .price{
+      position:absolute; right:12px; bottom:12px;
+      font-weight:900;
+      letter-spacing:.02em;
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.12);
+      padding:7px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+    .card-body{
+      padding:14px 14px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+    .card h4{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.02em;
+      line-height:1.25;
+    }
+    .meta{
+      font-family:var(--mono);
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .desc{
+      margin:0;
+      color:rgba(233,238,245,.78);
+      font-size:12.5px;
+      line-height:1.6;
+    }
+    .card-footer{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:auto;
+    }
+    .btn.small{
+      padding:9px 10px;
+      font-size:11px;
+    }
+    .btn.ghost{
+      background: transparent;
+    }
+    .btn.add{
+      flex:1;
+      justify-content:center;
+      border-color: rgba(46,229,157,.35);
+    }
+    .btn.add:hover{border-color: rgba(46,229,157,.6)}
+    .btn.view{
+      justify-content:center;
+      min-width:44px;
+    }
+
+    /* ---------- Studio ---------- */
+    .studio{
+      display:grid;
+      grid-template-columns: 1fr 370px;
+      gap:16px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .studio{grid-template-columns: 1fr}
+    }
+
+    .preview{
+      border:1px solid rgba(255,255,255,.085);
+      background: rgba(0,0,0,.22);
+      border-radius: var(--radius2);
+      overflow:hidden;
+    }
+    .preview-top{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      background: rgba(255,255,255,.02);
+    }
+    .preview-top .hint{
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+    .toggle{
+      display:flex; gap:8px; align-items:center;
+    }
+    .toggle .pill{
+      padding:7px 10px;
+    }
+
+    .canvas-wrap{
+      display:grid;
+      place-items:center;
+      padding:18px;
+      min-height: 520px;
+      position:relative;
+      background:
+        radial-gradient(420px 260px at 20% 20%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(440px 260px at 80% 80%, rgba(46,229,157,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+
+    /* Shirt mock (front/back) */
+    .shirt-stage{
+      width:min(520px, 92%);
+      aspect-ratio: 1 / 1;
+      position:relative;
+      display:grid;
+      place-items:center;
+      filter: drop-shadow(0 28px 55px rgba(0,0,0,.55));
+    }
+    .shirt{
+      width:72%;
+      height:80%;
+      border-radius: 28px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    }
+    .shirt::before{
+      content:"";
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(220px 160px at 30% 20%, rgba(255,255,255,.14), transparent 60%),
+        radial-gradient(240px 180px at 70% 75%, rgba(0,0,0,.25), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18));
+      mix-blend-mode: overlay;
+      opacity: .85;
+      pointer-events:none;
+    }
+
+    /* Fake sleeves/neck silhouette */
+    .silhouette{
+      position:absolute;
+      inset: -10% -6% -6% -6%;
+      background: radial-gradient(200px 140px at 50% 10%, rgba(0,0,0,.25), transparent 65%);
+      pointer-events:none;
+      opacity:.7;
+    }
+    .neck{
+      position:absolute;
+      top:6%;
+      left:50%;
+      transform: translateX(-50%);
+      width:32%;
+      height:16%;
+      border-radius: 0 0 999px 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      box-shadow: inset 0 10px 22px rgba(0,0,0,.28);
+    }
+
+    /* Design layers */
+    .design-layer{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width:44%;
+      height:44%;
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+    }
+    .design-img{
+      max-width:100%;
+      max-height:100%;
+      opacity:.96;
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,.35));
+    }
+    .design-text{
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:24px;
+      text-align:center;
+      text-shadow: 0 14px 24px rgba(0,0,0,.35);
+      user-select:none;
+      white-space:pre-wrap;
+      line-height:1.05;
+    }
+
+    /* Material overlay */
+    .material{
+      position:absolute; inset:0;
+      opacity:.55;
+      pointer-events:none;
+      mix-blend-mode: overlay;
+    }
+    .material.cotton{
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 6px),
+        radial-gradient(260px 200px at 30% 30%, rgba(255,255,255,.08), transparent 60%);
+    }
+    .material.poly{
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 5px),
+        radial-gradient(260px 200px at 70% 70%, rgba(255,255,255,.08), transparent 60%);
+    }
+    .material.denim{
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0 1px, transparent 1px 5px);
+      opacity:.65;
+    }
+
+    /* Controls */
+    .controls{
+      border:1px solid rgba(255,255,255,.085);
+      background: rgba(0,0,0,.22);
+      border-radius: var(--radius2);
+      overflow:hidden;
+    }
+    .controls-head{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .controls-head .t{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-family:var(--mono);
+    }
+    .controls-body{padding:14px}
+    .field{margin:12px 0}
+    .field label{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-family:var(--mono);
+      margin-bottom:8px;
+    }
+    .field input[type="text"], .field input[type="number"], .field textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      padding:10px 10px;
+      outline:none;
+    }
+    textarea{min-height:74px; resize:vertical}
+    .row2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .row3{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:10px;
+    }
+    .hintline{
+      font-family:var(--mono);
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.06em;
+      line-height:1.5;
+      margin-top:8px;
+    }
+    .color{
+      display:flex; align-items:center; gap:10px;
+    }
+    .color input[type="color"]{
+      width:44px; height:40px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+      padding:0;
+      cursor:pointer;
+    }
+
+    /* ---------- Cart Drawer ---------- */
+    .drawer{
+      position:fixed;
+      inset:0 0 0 auto;
+      width:min(420px, 92vw);
+      background: rgba(10,12,16,.92);
+      backdrop-filter: blur(14px);
+      border-left:1px solid var(--line);
+      transform: translateX(110%);
+      transition: .22s ease;
+      z-index:80;
+      display:flex;
+      flex-direction:column;
+      box-shadow: -30px 0 90px rgba(0,0,0,.55);
+    }
+    .drawer.open{transform: translateX(0)}
+    .drawer-head{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .drawer-head .ttl{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .drawer-body{padding:14px 16px; overflow:auto; flex:1}
+    .cart-item{
+      border:1px solid rgba(255,255,255,.085);
+      border-radius: 14px;
+      background: rgba(255,255,255,.02);
+      padding:12px;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .cart-item .name{font-weight:800; font-size:13px; margin:0}
+    .cart-item .smallmeta{
+      margin-top:6px;
+      font-family:var(--mono);
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.06em;
+      line-height:1.4;
+    }
+    .cart-item .right{
+      text-align:right;
+      display:flex; flex-direction:column; gap:10px; align-items:flex-end;
+      min-width: 110px;
+    }
+    .qty{
+      display:flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      padding:6px 8px;
+      background: rgba(0,0,0,.18);
+    }
+    .qty button{
+      border:0;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      width:22px; height:22px;
+      border-radius:999px;
+    }
+    .qty button:hover{background: rgba(255,255,255,.06)}
+    .drawer-foot{
+      padding:14px 16px 18px;
+      border-top:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    }
+    .totals{
+      display:flex; justify-content:space-between; align-items:center;
+      font-family:var(--mono);
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .totals strong{
+      color:var(--text);
+      font-family:var(--font);
+      font-size:16px;
+      letter-spacing:.02em;
+      text-transform:none;
+    }
+    .drawer-actions{display:flex; gap:10px}
+    .drawer-actions .btn{flex:1; justify-content:center}
+
+    /* ---------- Modal (quick view) ---------- */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      display:none;
+      z-index:75;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .modal-backdrop.show{display:flex}
+    .modal{
+      width:min(720px, 96vw);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(12,14,18,.92);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+    }
+    .modal-head h3{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .modal-body{padding:16px}
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:700px){.kv{grid-template-columns:1fr}}
+    .kv .box{
+      border:1px solid rgba(255,255,255,.085);
+      background: rgba(255,255,255,.02);
+      border-radius: 14px;
+      padding:14px;
+    }
+    .kv .box .k{font-family:var(--mono); color:var(--muted); font-size:11px; letter-spacing:.10em; text-transform:uppercase}
+    .kv .box .v{margin-top:6px; font-size:13px; line-height:1.55}
+
+    /* ---------- Footer ---------- */
+    footer{
+      margin-top:22px;
+      color:rgba(169,179,193,.8);
+      font-family:var(--mono);
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* Utilities */
+    .sep{height:1px; background: var(--line); margin:12px 0}
+    .hide{display:none !important}
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>MUSE</h1>
+          <div class="sub">thrifts • collabs • design studio</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="chip active" href="#thrifts" data-jump>Thrifts</a>
+        <a class="chip" href="#collabs" data-jump>Collaborations</a>
+        <a class="chip" href="#studio" data-jump>3D Design Studio</a>
+      </nav>
+
+      <div class="actions">
+        <div class="search" role="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="searchInput" type="search" placeholder="Search items (e.g. hoodie, denim, collab)..." />
+        </div>
+        <button class="btn primary" id="openCartBtn" type="button" aria-label="Open cart">
+          Cart <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Shop hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">MUSE SHOP SYSTEM</div>
+          <h2 class="title">Curated pieces. Limited collabs. Custom-built identity.</h2>
+          <p class="lead">
+            This shop page is designed in the same minimal, high-contrast “editorial techwear” layout.
+            Browse thrifts, discover collaborations, or enter the studio to design a shirt with selectable materials,
+            colors, and placement—then add it to your cart.
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#studio" data-jump>Enter Studio</a>
+            <a class="btn" href="#thrifts" data-jump>Browse Thrifts</a>
+            <button class="btn" type="button" id="quickHowBtn">How it works</button>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <h3>Live Status</h3>
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="num" id="metricItems">18</div>
+              <div class="lbl">Items Loaded</div>
+            </div>
+            <div class="metric">
+              <div class="num" id="metricDrops">3</div>
+              <div class="lbl">Active Drops</div>
+            </div>
+            <div class="metric">
+              <div class="num" id="metricCustom">Studio</div>
+              <div class="lbl">Custom Builder</div>
+            </div>
+            <div class="metric">
+              <div class="num" id="metricCart">0</div>
+              <div class="lbl">In Cart</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- Sidebar (Filters) -->
+      <aside class="sidebar" aria-label="Filters">
+        <div class="side-head">
+          <div class="cap">Filters</div>
+          <div class="big">Refine the catalog</div>
+        </div>
+        <div class="side-body">
+          <div class="filter">
+            <label for="categorySelect">Category</label>
+            <select id="categorySelect">
+              <option value="all">All</option>
+              <option value="thrifts">Thrifts</option>
+              <option value="collabs">Collaborations</option>
+              <option value="studio">Studio Items</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <label for="sortSelect">Sort</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low → High</option>
+              <option value="high">Price: High → Low</option>
+              <option value="new">Newest</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <label for="priceRange">Max Price</label>
+            <input type="range" id="priceRange" min="15" max="220" value="220" />
+            <div class="range-row">
+              <span>15</span>
+              <span id="priceLabel">≤ 220</span>
+            </div>
+          </div>
+
+          <div class="filter">
+            <label>Tags</label>
+            <div class="pillrow" id="tagPills">
+              <div class="pill" data-tag="hoodie">hoodie</div>
+              <div class="pill" data-tag="tee">tee</div>
+              <div class="pill" data-tag="denim">denim</div>
+              <div class="pill" data-tag="jacket">jacket</div>
+              <div class="pill" data-tag="limited">limited</div>
+              <div class="pill" data-tag="vintage">vintage</div>
+              <div class="pill" data-tag="techwear">techwear</div>
+              <div class="pill" data-tag="collab">collab</div>
+            </div>
+            <div class="hintline">Tip: Combine tags + search for a “designed” browsing experience.</div>
+          </div>
+
+          <div class="sep"></div>
+
+          <button class="btn" type="button" id="clearFiltersBtn">Clear Filters</button>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div>
+        <!-- Thrifts -->
+        <section id="thrifts" class="section" aria-label="Thrifts">
+          <div class="section-head">
+            <div>
+              <h3 class="section-title">Thrifts</h3>
+              <p class="section-sub">Curated second-hand pieces. Clean condition. Modern silhouettes.</p>
+            </div>
+            <div class="meta">
+              <span id="thriftsCount">0 items</span>
+              <span>drop: weekly</span>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="cards" id="thriftsGrid"></div>
+          </div>
+        </section>
+
+        <!-- Collaborations -->
+        <section id="collabs" class="section" aria-label="Brand Collaborations">
+          <div class="section-head">
+            <div>
+              <h3 class="section-title">Brand Collaborations</h3>
+              <p class="section-sub">Limited runs with creatives, artists, and partner brands. Once gone, gone.</p>
+            </div>
+            <div class="meta">
+              <span id="collabsCount">0 items</span>
+              <span>drop: limited</span>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="cards" id="collabsGrid"></div>
+          </div>
+        </section>
+
+        <!-- Studio -->
+        <section id="studio" class="section" aria-label="3D Design Studio">
+          <div class="section-head">
+            <div>
+              <h3 class="section-title">3D Design Studio</h3>
+              <p class="section-sub">Select materials, choose colors, set design placement, and preview your shirt before adding to cart.</p>
+            </div>
+            <div class="meta">
+              <span>preview: live</span>
+              <span>engine: CSS mock</span>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="studio">
+              <!-- Preview -->
+              <div class="preview">
+                <div class="preview-top">
+                  <div class="hint">Live preview (drag controls below)</div>
+                  <div class="toggle" aria-label="View toggle">
+                    <div class="pill on" id="frontBtn">Front</div>
+                    <div class="pill" id="backBtn">Back</div>
+                  </div>
+                </div>
+
+                <div class="canvas-wrap">
+                  <div class="shirt-stage">
+                    <div class="shirt" id="shirt">
+                      <div class="silhouette" aria-hidden="true"></div>
+                      <div class="neck" aria-hidden="true"></div>
+                      <div class="material cotton" id="materialOverlay" aria-hidden="true"></div>
+
+                      <div class="design-layer" id="designLayer">
+                        <img class="design-img hide" id="designImage" alt="Uploaded design preview" />
+                        <div class="design-text hide" id="designText"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="controls">
+                <div class="controls-head">
+                  <div class="t">Builder controls</div>
+                  <button class="btn small" type="button" id="resetStudioBtn">Reset</button>
+                </div>
+
+                <div class="controls-body">
+                  <div class="field">
+                    <label>Material <span class="hintline" style="margin:0; text-transform:none; letter-spacing:.02em">affects surface texture</span></label>
+                    <select id="materialSelect">
+                      <option value="cotton">Cotton (soft)</option>
+                      <option value="poly">Poly Blend (smooth)</option>
+                      <option value="denim">Denim (heavy)</option>
+                    </select>
+                  </div>
+
+                  <div class="row2">
+                    <div class="field">
+                      <label>Shirt color</label>
+                      <div class="color">
+                        <input type="color" id="shirtColor" value="#161b22" />
+                        <input type="text" id="shirtColorHex" value="#161b22" />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label>Placement</label>
+                      <select id="placementSelect">
+                        <option value="center-front">Center (Front)</option>
+                        <option value="left-chest">Left Chest</option>
+                        <option value="back-center">Back (Center)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="sep"></div>
+
+                  <div class="field">
+                    <label>Upload image (logo / art)</label>
+                    <input type="file" id="imageUpload" accept="image/*" />
+                    <div class="hintline">Transparent PNG works best. Large images will auto-scale.</div>
+                  </div>
+
+                  <div class="row2">
+                    <div class="field">
+                      <label>Image scale <span id="imgScaleLabel">100%</span></label>
+                      <input type="range" id="imgScale" min="40" max="180" value="100" />
+                    </div>
+                    <div class="field">
+                      <label>Image opacity <span id="imgOpacityLabel">96%</span></label>
+                      <input type="range" id="imgOpacity" min="20" max="100" value="96" />
+                    </div>
+                  </div>
+
+                  <div class="sep"></div>
+
+                  <div class="field">
+                    <label>Text (optional)</label>
+                    <textarea id="textInput" placeholder="E.g. MUSE / SILENCE STRUCTURE INTENT"></textarea>
+                  </div>
+
+                  <div class="row3">
+                    <div class="field">
+                      <label>Text size <span id="txtSizeLabel">24px</span></label>
+                      <input type="range" id="textSize" min="12" max="52" value="24" />
+                    </div>
+                    <div class="field">
+                      <label>Text opacity <span id="txtOpacityLabel">100%</span></label>
+                      <input type="range" id="textOpacity" min="20" max="100" value="100" />
+                    </div>
+                    <div class="field">
+                      <label>Text color</label>
+                      <div class="color">
+                        <input type="color" id="textColor" value="#f2f6ff" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sep"></div>
+
+                  <div class="field">
+                    <label>Custom shirt name</label>
+                    <input type="text" id="customName" value="Custom Studio Tee" />
+                  </div>
+
+                  <div class="row2">
+                    <div class="field">
+                      <label>Quantity</label>
+                      <input type="number" id="customQty" min="1" value="1" />
+                    </div>
+                    <div class="field">
+                      <label>Estimated price</label>
+                      <input type="text" id="customPrice" value="$59.00" readonly />
+                    </div>
+                  </div>
+
+                  <div class="drawer-actions" style="margin-top:12px">
+                    <button class="btn" type="button" id="savePresetBtn">Save preset</button>
+                    <button class="btn primary" type="button" id="addCustomToCartBtn">Add to cart</button>
+                  </div>
+
+                  <div class="hintline" style="margin-top:10px">
+                    Want real 3D? Replace the preview with Three.js + GLTF shirt model later (same control inputs).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <div>© <span id="year"></span> MUSE</div>
+          <div>Minimal shop UI • thrifts • collabs • studio</div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-head">
+      <h3 class="ttl">Cart</h3>
+      <button class="btn" type="button" id="closeCartBtn">Close</button>
+    </div>
+
+    <div class="drawer-body" id="cartItems"></div>
+
+    <div class="drawer-foot">
+      <div class="totals">
+        <span>Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+      <div class="drawer-actions">
+        <button class="btn" type="button" id="clearCartBtn">Clear</button>
+        <button class="btn primary" type="button" id="checkoutBtn">Checkout</button>
+      </div>
+      <div class="hintline" style="margin-top:10px">
+        Checkout is demo-only. Connect to Stripe/Shopify later.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Quick view">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="modalTitle">Quick View</h3>
+        <button class="btn" type="button" id="modalCloseBtn">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="kv">
+          <div class="box">
+            <div class="k">Summary</div>
+            <div class="v" id="modalSummary">—</div>
+          </div>
+          <div class="box">
+            <div class="k">Details</div>
+            <div class="v" id="modalDetails">—</div>
+          </div>
+        </div>
+        <div class="sep"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn" type="button" id="modalAddBtn">Add to cart</button>
+          <a class="btn primary" href="#studio" data-jump id="modalToStudioBtn">Customize in Studio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -----------------------------
+    // Data (swap with your real catalog later)
+    // -----------------------------
+    const catalog = [
+      // Thrifts
+      { id:"t1", section:"thrifts", name:"Vintage Oversized Hoodie", price:39, tag:"hoodie vintage", drop:"New", desc:"Soft fleece, washed black, oversized fit. Clean condition.", details:"Size range: M–XL • Condition: 8/10 • Fabric: cotton blend • Fit: oversized." },
+      { id:"t2", section:"thrifts", name:"Denim Work Jacket", price:52, tag:"jacket denim vintage", drop:"Hot", desc:"Heavy denim, structured shoulders, minimal branding.", details:"Size range: M–L • Condition: 9/10 • Fabric: denim • Fit: structured." },
+      { id:"t3", section:"thrifts", name:"Minimal Graphic Tee", price:22, tag:"tee vintage", drop:"New", desc:"Lightweight tee with subtle print. Easy layering piece.", details:"Size range: S–L • Condition: 8/10 • Fabric: cotton • Fit: regular." },
+      { id:"t4", section:"thrifts", name:"Techwear Cargo Pants", price:68, tag:"techwear limited", drop:"Drop", desc:"Multi-pocket cargos, clean taper, movement-first.", details:"Waist: 30–36 • Condition: 8/10 • Fabric: nylon blend • Fit: tapered." },
+      { id:"t5", section:"thrifts", name:"Stonewash Crewneck", price:34, tag:"vintage", drop:"New", desc:"Stonewash texture with refined fit. No loud logos.", details:"Size range: M–XL • Condition: 9/10 • Fabric: cotton • Fit: relaxed." },
+      { id:"t6", section:"thrifts", name:"Blackout Windbreaker", price:47, tag:"jacket techwear", drop:"Hot", desc:"Matte black shell, minimal lines, city-ready.", details:"Size range: M–XL • Condition: 8/10 • Fabric: poly shell • Fit: regular." },
+
+      // Collaborations
+      { id:"c1", section:"collabs", name:"MUSE x Artist — Logo Tee", price:59, tag:"tee collab limited", drop:"Limited", desc:"Clean front mark, statement back. Numbered run.", details:"Edition: 1/120 • Fabric: premium cotton • Print: high density • Fit: boxy." },
+      { id:"c2", section:"collabs", name:"MUSE x Brand — Utility Hoodie", price:89, tag:"hoodie collab limited techwear", drop:"Limited", desc:"Utility pockets, heavy fleece, subtle embroidery.", details:"Edition: 1/60 • Fabric: 420gsm fleece • Details: embroidery + woven label." },
+      { id:"c3", section:"collabs", name:"MUSE x 3D — Render Jacket", price:129, tag:"jacket collab limited", drop:"Limited", desc:"Designed from a 3D concept. Minimal geometry lines.", details:"Edition: 1/40 • Fabric: coated shell • Build: seam-taped accents (mock)." },
+      { id:"c4", section:"collabs", name:"MUSE x Creator — Denim Capsule", price:110, tag:"denim collab limited", drop:"Drop", desc:"Denim set with clean cuts and stitched signatures.", details:"Edition: 1/30 • Fabric: raw denim • Details: stitched signature patch." },
+      { id:"c5", section:"collabs", name:"MUSE x Sound — Studio Tee", price:65, tag:"tee collab", drop:"New", desc:"Minimal front, audio-wave back print in matte ink.", details:"Edition: 1/90 • Fabric: cotton • Print: matte ink • Fit: relaxed." },
+      { id:"c6", section:"collabs", name:"MUSE x Night — Blackout Hoodie", price:95, tag:"hoodie collab limited", drop:"Hot", desc:"Black-on-black details with reflective micro-mark.", details:"Edition: 1/50 • Fabric: heavy fleece • Detail: micro reflective mark." },
+    ];
+
+    // -----------------------------
+    // Elements
+    // -----------------------------
+    const thriftsGrid = document.getElementById("thriftsGrid");
+    const collabsGrid = document.getElementById("collabsGrid");
+    const thriftsCount = document.getElementById("thriftsCount");
+    const collabsCount = document.getElementById("collabsCount");
+    const metricItems = document.getElementById("metricItems");
+    const metricCart = document.getElementById("metricCart");
+
+    const searchInput = document.getElementById("searchInput");
+    const categorySelect = document.getElementById("categorySelect");
+    const sortSelect = document.getElementById("sortSelect");
+    const priceRange = document.getElementById("priceRange");
+    const priceLabel = document.getElementById("priceLabel");
+    const tagPills = Array.from(document.querySelectorAll("#tagPills .pill"));
+    const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+
+    // Cart
+    const openCartBtn = document.getElementById("openCartBtn");
+    const closeCartBtn = document.getElementById("closeCartBtn");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartTotalEl = document.getElementById("cartTotal");
+    const cartCountEl = document.getElementById("cartCount");
+    const clearCartBtn = document.getElementById("clearCartBtn");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+
+    // Modal
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSummary = document.getElementById("modalSummary");
+    const modalDetails = document.getElementById("modalDetails");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalAddBtn = document.getElementById("modalAddBtn");
+    let modalActiveItem = null;
+
+    // Studio
+    const shirt = document.getElementById("shirt");
+    const materialOverlay = document.getElementById("materialOverlay");
+    const designLayer = document.getElementById("designLayer");
+    const designImage = document.getElementById("designImage");
+    const designText = document.getElementById("designText");
+
+    const frontBtn = document.getElementById("frontBtn");
+    const backBtn = document.getElementById("backBtn");
+
+    const materialSelect = document.getElementById("materialSelect");
+    const shirtColor = document.getElementById("shirtColor");
+    const shirtColorHex = document.getElementById("shirtColorHex");
+    const placementSelect = document.getElementById("placementSelect");
+    const imageUpload = document.getElementById("imageUpload");
+    const imgScale = document.getElementById("imgScale");
+    const imgScaleLabel = document.getElementById("imgScaleLabel");
+    const imgOpacity = document.getElementById("imgOpacity");
+    const imgOpacityLabel = document.getElementById("imgOpacityLabel");
+
+    const textInput = document.getElementById("textInput");
+    const textSize = document.getElementById("textSize");
+    const txtSizeLabel = document.getElementById("txtSizeLabel");
+    const textOpacity = document.getElementById("textOpacity");
+    const txtOpacityLabel = document.getElementById("txtOpacityLabel");
+    const textColor = document.getElementById("textColor");
+
+    const customName = document.getElementById("customName");
+    const customQty = document.getElementById("customQty");
+    const customPrice = document.getElementById("customPrice");
+    const addCustomToCartBtn = document.getElementById("addCustomToCartBtn");
+    const resetStudioBtn = document.getElementById("resetStudioBtn");
+    const savePresetBtn = document.getElementById("savePresetBtn");
+
+    const quickHowBtn = document.getElementById("quickHowBtn");
+    const yearEl = document.getElementById("year");
+
+    // -----------------------------
+    // State
+    // -----------------------------
+    const state = {
+      query: "",
+      category: "all",
+      sort: "featured",
+      maxPrice: Number(priceRange.value),
+      tags: new Set(),
+      cart: [] // {key, name, price, qty, meta}
+    };
+
+    // -----------------------------
+    // Helpers
+    // -----------------------------
+    const fmt = (n) => "$" + n.toFixed(2);
+
+    function smoothJump(targetId){
+      const el = document.querySelector(targetId);
+      if(!el) return;
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+      // set nav active
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      const link = document.querySelector(`.chip[href="${targetId}"]`);
+      if(link) link.classList.add("active");
+    }
+
+    function matchesFilters(item){
+      // category
+      if(state.category !== "all" && item.section !== state.category) return false;
+      // query
+      const q = state.query.trim().toLowerCase();
+      if(q){
+        const hay = (item.name + " " + item.desc + " " + item.tag + " " + item.drop).toLowerCase();
+        if(!hay.includes(q)) return false;
+      }
+      // price
+      if(item.price > state.maxPrice) return false;
+      // tags
+      if(state.tags.size){
+        const tags = (item.tag || "").toLowerCase();
+        for(const t of state.tags){
+          if(!tags.includes(t)) return false;
+        }
+      }
+      return true;
+    }
+
+    function sortItems(items){
+      const arr = [...items];
+      switch(state.sort){
+        case "low": arr.sort((a,b)=>a.price-b.price); break;
+        case "high": arr.sort((a,b)=>b.price-a.price); break;
+        case "new": arr.sort((a,b)=> (a.drop==="New"?0:1) - (b.drop==="New"?0:1)); break;
+        default: /* featured */ arr.sort((a,b)=> (a.drop==="Hot"?0:1) - (b.drop==="Hot"?0:1)); break;
+      }
+      return arr;
+    }
+
+    function cardTemplate(item){
+      const tagLabel = item.section === "thrifts" ? "Thrift" : "Collab";
+      const price = fmt(item.price);
+      return `
+        <article class="card" data-id="${item.id}">
+          <div class="media">
+            <div class="tag">${tagLabel} • ${item.drop}</div>
+            <div class="price">${price}</div>
+          </div>
+          <div class="card-body">
+            <h4>${item.name}</h4>
+            <div class="meta">
+              <span>${item.section}</span>
+              <span>${item.tag.split(" ")[0] || "piece"}</span>
+              <span>${item.drop.toLowerCase()}</span>
+            </div>
+            <p class="desc">${item.desc}</p>
+            <div class="card-footer">
+              <button class="btn small add" type="button" data-add>Add to cart</button>
+              <button class="btn small ghost view" type="button" data-view aria-label="Quick view">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCatalog(){
+      const items = catalog.filter(matchesFilters);
+      const thrifts = sortItems(items.filter(i=>i.section==="thrifts"));
+      const collabs = sortItems(items.filter(i=>i.section==="collabs"));
+
+      thriftsGrid.innerHTML = thrifts.map(cardTemplate).join("");
+      collabsGrid.innerHTML = collabs.map(cardTemplate).join("");
+
+      thriftsCount.textContent = `${thrifts.length} items`;
+      collabsCount.textContent = `${collabs.length} items`;
+
+      metricItems.textContent = String(catalog.length);
+      attachCardHandlers();
+    }
+
+    function attachCardHandlers(){
+      document.querySelectorAll(".card").forEach(card=>{
+        const id = card.getAttribute("data-id");
+        const item = catalog.find(x=>x.id===id);
+        if(!item) return;
+
+        card.querySelector('[data-add]').addEventListener("click", ()=>{
+          addToCart({
+            key: item.id,
+            name: item.name,
+            price: item.price,
+            qty: 1,
+            meta: `${item.section.toUpperCase()} • ${item.drop} • tags: ${item.tag}`
+          });
+          openCart();
+        });
+
+        card.querySelector('[data-view]').addEventListener("click", ()=>{
+          openModal(item);
+        });
+      });
+    }
+
+    // -----------------------------
+    // Cart logic
+    // -----------------------------
+    function addToCart({key,name,price,qty,meta}){
+      const existing = state.cart.find(x=>x.key===key && x.meta===meta);
+      if(existing){
+        existing.qty += qty;
+      } else {
+        state.cart.push({key,name,price,qty,meta});
+      }
+      renderCart();
+    }
+
+    function renderCart(){
+      if(!state.cart.length){
+        cartItemsEl.innerHTML = `<div class="hintline">Your cart is empty. Add a thrift, a collab, or a custom studio build.</div>`;
+      } else {
+        cartItemsEl.innerHTML = state.cart.map((it, idx)=>`
+          <div class="cart-item" data-idx="${idx}">
+            <div>
+              <p class="name">${it.name}</p>
+              <div class="smallmeta">${it.meta}</div>
+            </div>
+            <div class="right">
+              <div style="font-weight:900">${fmt(it.price * it.qty)}</div>
+              <div class="qty" aria-label="Quantity controls">
+                <button type="button" data-dec aria-label="Decrease">−</button>
+                <div style="min-width:18px; text-align:center">${it.qty}</div>
+                <button type="button" data-inc aria-label="Increase">+</button>
+              </div>
+              <button class="btn small" type="button" data-remove style="border-color: rgba(255,77,109,.35)">Remove</button>
+            </div>
+          </div>
+        `).join("");
+
+        cartItemsEl.querySelectorAll(".cart-item").forEach(row=>{
+          const idx = Number(row.getAttribute("data-idx"));
+          row.querySelector("[data-inc]").addEventListener("click", ()=>{
+            state.cart[idx].qty += 1;
+            renderCart();
+          });
+          row.querySelector("[data-dec]").addEventListener("click", ()=>{
+            state.cart[idx].qty = Math.max(1, state.cart[idx].qty - 1);
+            renderCart();
+          });
+          row.querySelector("[data-remove]").addEventListener("click", ()=>{
+            state.cart.splice(idx, 1);
+            renderCart();
+          });
+        });
+      }
+
+      const total = state.cart.reduce((s,it)=> s + it.price*it.qty, 0);
+      cartTotalEl.textContent = fmt(total);
+      const count = state.cart.reduce((s,it)=> s + it.qty, 0);
+      cartCountEl.textContent = String(count);
+      metricCart.textContent = String(count);
+    }
+
+    function openCart(){ cartDrawer.classList.add("open"); }
+    function closeCart(){ cartDrawer.classList.remove("open"); }
+
+    // -----------------------------
+    // Modal logic
+    // -----------------------------
+    function openModal(item){
+      modalActiveItem = item;
+      modalTitle.textContent = item.name;
+      modalSummary.textContent = item.desc;
+      modalDetails.textContent = item.details;
+      modalAddBtn.textContent = `Add to cart • ${fmt(item.price)}`;
+      modalBackdrop.classList.add("show");
+    }
+    function closeModal(){
+      modalBackdrop.classList.remove("show");
+      modalActiveItem = null;
+    }
+
+    // -----------------------------
+    // Studio logic (mock 3D)
+    // -----------------------------
+    let viewMode = "front"; // "front" | "back"
+
+    function setPlacement(val){
+      // We shift the design layer based on placement & view
+      // center-front: default center
+      // left-chest: smaller and up-left
+      // back-center: only meaningful on back view
+      let x = 0, y = 0, scale = 1;
+
+      if(val === "left-chest"){
+        x = -18; y = -20; scale = 0.62;
+      } else if(val === "back-center"){
+        x = 0; y = 0; scale = 1.0;
+      } else {
+        x = 0; y = 0; scale = 1.0;
+      }
+
+      // Back view slight shift down for realism
+      if(viewMode === "back"){
+        y += 6;
+      }
+
+      designLayer.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
+    }
+
+    function setView(mode){
+      viewMode = mode;
+      frontBtn.classList.toggle("on", mode === "front");
+      backBtn.classList.toggle("on", mode === "back");
+
+      // Visual cue: rotate slightly for back
+      shirt.style.transform = mode === "back" ? "rotateY(180deg)" : "none";
+      shirt.style.transition = "transform .25s ease";
+
+      // placement depending on view
+      const placement = placementSelect.value;
+      // If user chose "back-center" but is on front, keep layer faintly present; still works.
+      setPlacement(placement);
+    }
+
+    function setMaterial(type){
+      materialOverlay.className = `material ${type}`;
+    }
+
+    function setShirtColor(hex){
+      shirt.style.background = `linear-gradient(135deg, ${hex} 0%, rgba(255,255,255,.02) 100%)`;
+      // for better depth
+      shirt.style.boxShadow = `inset 0 30px 80px rgba(0,0,0,.35)`;
+    }
+
+    function updateImage(){
+      const scale = Number(imgScale.value) / 100;
+      const op = Number(imgOpacity.value) / 100;
+      imgScaleLabel.textContent = `${imgScale.value}%`;
+      imgOpacityLabel.textContent = `${imgOpacity.value}%`;
+
+      designImage.style.transform = `scale(${scale})`;
+      designImage.style.opacity = String(op);
+    }
+
+    function updateText(){
+      const txt = textInput.value.trim();
+      const size = Number(textSize.value);
+      const op = Number(textOpacity.value) / 100;
+
+      txtSizeLabel.textContent = `${size}px`;
+      txtOpacityLabel.textContent = `${textOpacity.value}%`;
+
+      if(txt){
+        designText.classList.remove("hide");
+        designText.textContent = txt;
+      } else {
+        designText.classList.add("hide");
+      }
+
+      designText.style.fontSize = `${size}px`;
+      designText.style.opacity = String(op);
+      designText.style.color = textColor.value;
+    }
+
+    function updatePricing(){
+      // simple pricing model: base + material + image/text modifiers
+      const material = materialSelect.value;
+      let base = 49;
+
+      if(material === "cotton") base += 5;
+      if(material === "poly") base += 7;
+      if(material === "denim") base += 15;
+
+      const hasImg = !designImage.classList.contains("hide");
+      const hasText = !designText.classList.contains("hide");
+
+      if(hasImg) base += 8;
+      if(hasText) base += 4;
+
+      // back design premium
+      const placement = placementSelect.value;
+      if(placement === "back-center") base += 6;
+
+      customPrice.value = fmt(base);
+      return base;
+    }
+
+    function resetStudio(){
+      materialSelect.value = "cotton";
+      setMaterial("cotton");
+      shirtColor.value = "#161b22";
+      shirtColorHex.value = "#161b22";
+      setShirtColor("#161b22");
+
+      placementSelect.value = "center-front";
+      setView("front");
+
+      imageUpload.value = "";
+      designImage.src = "";
+      designImage.classList.add("hide");
+      imgScale.value = 100;
+      imgOpacity.value = 96;
+      updateImage();
+
+      textInput.value = "";
+      textSize.value = 24;
+      textOpacity.value = 100;
+      textColor.value = "#f2f6ff";
+      updateText();
+
+      customName.value = "Custom Studio Tee";
+      customQty.value = 1;
+
+      updatePricing();
+      setPlacement(placementSelect.value);
+    }
+
+    function buildCustomMeta(){
+      const material = materialSelect.value;
+      const placement = placementSelect.value;
+      const color = shirtColorHex.value.toUpperCase();
+      const img = designImage.classList.contains("hide") ? "no image" : `image scale ${imgScale.value}%`;
+      const txt = designText.classList.contains("hide") ? "no text" : `text size ${textSize.value}px`;
+      const view = viewMode;
+
+      return `CUSTOM • ${material.toUpperCase()} • ${placement} • color ${color} • ${img} • ${txt} • view ${view}`;
+    }
+
+    function savePreset(){
+      const preset = {
+        name: customName.value.trim() || "Custom Studio Tee",
+        material: materialSelect.value,
+        color: shirtColorHex.value,
+        placement: placementSelect.value,
+        imgScale: imgScale.value,
+        imgOpacity: imgOpacity.value,
+        text: textInput.value,
+        textSize: textSize.value,
+        textOpacity: textOpacity.value,
+        textColor: textColor.value
+      };
+      localStorage.setItem("muse_studio_preset", JSON.stringify(preset));
+      // quick feedback
+      savePresetBtn.textContent = "Saved";
+      setTimeout(()=> savePresetBtn.textContent = "Save preset", 900);
+    }
+
+    function loadPresetIfAny(){
+      const raw = localStorage.getItem("muse_studio_preset");
+      if(!raw) return;
+      try{
+        const p = JSON.parse(raw);
+        materialSelect.value = p.material || "cotton";
+        setMaterial(materialSelect.value);
+
+        shirtColor.value = p.color || "#161b22";
+        shirtColorHex.value = (p.color || "#161b22");
+        setShirtColor(shirtColorHex.value);
+
+        placementSelect.value = p.placement || "center-front";
+        imgScale.value = p.imgScale || 100;
+        imgOpacity.value = p.imgOpacity || 96;
+
+        textInput.value = p.text || "";
+        textSize.value = p.textSize || 24;
+        textOpacity.value = p.textOpacity || 100;
+        textColor.value = p.textColor || "#f2f6ff";
+
+        updateImage();
+        updateText();
+        updatePricing();
+        setPlacement(placementSelect.value);
+      }catch(e){}
+    }
+
+    // -----------------------------
+    // Filters & events
+    // -----------------------------
+    function setActiveChip(){
+      // highlight nav chip on scroll (basic)
+      const sections = ["#thrifts","#collabs","#studio"].map(id => document.querySelector(id));
+      const y = window.scrollY + 120;
+      let active = "#thrifts";
+      for(const s of sections){
+        if(s && s.offsetTop <= y) active = "#" + s.id;
+      }
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      const link = document.querySelector(`.chip[href="${active}"]`);
+      if(link) link.classList.add("active");
+    }
+
+    document.querySelectorAll("[data-jump]").forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const href = a.getAttribute("href");
+        if(href && href.startsWith("#")){
+          e.preventDefault();
+          smoothJump(href);
+        }
+      });
+    });
+
+    window.addEventListener("scroll", ()=> setActiveChip(), {passive:true});
+
+    searchInput?.addEventListener("input", ()=>{
+      state.query = searchInput.value;
+      renderCatalog();
+    });
+
+    categorySelect.addEventListener("change", ()=>{
+      state.category = categorySelect.value;
+      renderCatalog();
+    });
+
+    sortSelect.addEventListener("change", ()=>{
+      state.sort = sortSelect.value;
+      renderCatalog();
+    });
+
+    priceRange.addEventListener("input", ()=>{
+      state.maxPrice = Number(priceRange.value);
+      priceLabel.textContent = `≤ ${state.maxPrice}`;
+      renderCatalog();
+    });
+
+    tagPills.forEach(p=>{
+      p.addEventListener("click", ()=>{
+        const t = p.getAttribute("data-tag");
+        if(state.tags.has(t)){
+          state.tags.delete(t);
+          p.classList.remove("on");
+        } else {
+          state.tags.add(t);
+          p.classList.add("on");
+        }
+        renderCatalog();
+      });
+    });
+
+    clearFiltersBtn.addEventListener("click", ()=>{
+      state.query = "";
+      if(searchInput) searchInput.value = "";
+      state.category = "all";
+      categorySelect.value = "all";
+      state.sort = "featured";
+      sortSelect.value = "featured";
+      state.maxPrice = 220;
+      priceRange.value = 220;
+      priceLabel.textContent = `≤ 220`;
+      state.tags.clear();
+      tagPills.forEach(p=>p.classList.remove("on"));
+      renderCatalog();
+    });
+
+    // Cart events
+    openCartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    clearCartBtn.addEventListener("click", ()=>{
+      state.cart = [];
+      renderCart();
+    });
+    checkoutBtn.addEventListener("click", ()=>{
+      alert("Demo checkout. Next step: integrate Stripe/Shopify checkout flow.");
+    });
+
+    // Modal events
+    modalCloseBtn.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e)=>{
+      if(e.target === modalBackdrop) closeModal();
+    });
+    modalAddBtn.addEventListener("click", ()=>{
+      if(!modalActiveItem) return;
+      addToCart({
+        key: modalActiveItem.id,
+        name: modalActiveItem.name,
+        price: modalActiveItem.price,
+        qty: 1,
+        meta: `${modalActiveItem.section.toUpperCase()} • ${modalActiveItem.drop} • tags: ${modalActiveItem.tag}`
+      });
+      closeModal();
+      openCart();
+    });
+
+    // Studio events
+    frontBtn.addEventListener("click", ()=> setView("front"));
+    backBtn.addEventListener("click", ()=> setView("back"));
+
+    materialSelect.addEventListener("change", ()=>{
+      setMaterial(materialSelect.value);
+      updatePricing();
+    });
+
+    shirtColor.addEventListener("input", ()=>{
+      shirtColorHex.value = shirtColor.value;
+      setShirtColor(shirtColor.value);
+    });
+    shirtColorHex.addEventListener("input", ()=>{
+      const v = shirtColorHex.value.trim();
+      if(/^#[0-9A-Fa-f]{6}$/.test(v)){
+        shirtColor.value = v;
+        setShirtColor(v);
+      }
+    });
+
+    placementSelect.addEventListener("change", ()=>{
+      setPlacement(placementSelect.value);
+      updatePricing();
+      // Auto flip if user selects back placement (feels intentional)
+      if(placementSelect.value === "back-center"){
+        setView("back");
+      }
+    });
+
+    imageUpload.addEventListener("change", ()=>{
+      const file = imageUpload.files && imageUpload.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        designImage.src = reader.result;
+        designImage.classList.remove("hide");
+        updateImage();
+        updatePricing();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    imgScale.addEventListener("input", ()=>{
+      updateImage();
+      updatePricing();
+    });
+    imgOpacity.addEventListener("input", ()=>{
+      updateImage();
+    });
+
+    textInput.addEventListener("input", ()=>{
+      updateText();
+      updatePricing();
+    });
+    textSize.addEventListener("input", ()=>{
+      updateText();
+      updatePricing();
+    });
+    textOpacity.addEventListener("input", ()=> updateText());
+    textColor.addEventListener("input", ()=> updateText());
+
+    resetStudioBtn.addEventListener("click", resetStudio);
+
+    addCustomToCartBtn.addEventListener("click", ()=>{
+      const name = (customName.value.trim() || "Custom Studio Tee");
+      const qty = Math.max(1, Number(customQty.value || 1));
+      const price = updatePricing();
+      const meta = buildCustomMeta();
+
+      // Unique key for custom builds (so variants can coexist)
+      const key = "custom_" + btoa(meta).slice(0, 18);
+
+      addToCart({ key, name, price, qty, meta });
+      openCart();
+    });
+
+    savePresetBtn.addEventListener("click", savePreset);
+
+    quickHowBtn.addEventListener("click", ()=>{
+      openModal({
+        id:"how",
+        section:"studio",
+        name:"How the MUSE shop page works",
+        price:0,
+        drop:"Info",
+        tag:"info",
+        desc:"Browse thrifts/collabs, filter with tags + search, then design a shirt in the studio and add it to cart.",
+        details:"This page is a front-end MVP. Next upgrades: connect to a product API, add real product images, integrate Stripe checkout, and upgrade the studio preview to real WebGL/Three.js with a shirt model."
+      });
+      modalAddBtn.textContent = "Close";
+      modalAddBtn.onclick = closeModal;
+    });
+
+    // -----------------------------
+    // Init
+    // -----------------------------
+    yearEl.textContent = new Date().getFullYear();
+    priceLabel.textContent = `≤ ${state.maxPrice}`;
+    renderCatalog();
+    renderCart();
+    resetStudio();
+    loadPresetIfAny();
+  </script>
+</body>
+</html>

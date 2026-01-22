@@ -41,9 +41,9 @@ function productCardHTML(p) {
       <div class="card h-100 border-0 shadow-sm product-card-modern">
         <img src="${p.image}" class="card-img-top" alt="${p.name}">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${p.name}</h5>
+          <h5 class="card-text">${p.name}</h5>
           <p class="card-text text-muted small">${p.description}</p>
-          <div class="fw-bold mb-3">${priceText}</div>
+          <div class="card-text mb-3">${priceText}</div>
           <a href="${p.whatsapp}"
              class="btn btn-primary mt-auto w-100 order-btn"
              data-product-id="${p.id}">

@@ -56,11 +56,25 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+    cursor: pointer;
 }
+
+.site-logo {
+    max-height: 100%;      /* never exceed header height */
+    height: 40px;          /* safe default */
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .site-logo:hover {
+    transform: scale(1.05);
+  }
+  
 
 nav ul {
     display: flex;
@@ -190,7 +204,10 @@ nav a.active {
 
 
 /* --- Shop Grid --- */
-
+.card {
+    background-color: #d6d6d025;
+  }
+  
 .section-title {
     text-align: center;
     margin: 4rem 0 2rem;
@@ -206,6 +223,7 @@ nav a.active {
 
 .product-card {
     background: var(--card-bg);
+    
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1rem;
@@ -228,6 +246,7 @@ nav a.active {
 .product-info h3 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+    
 }
 
 .product-desc {
@@ -243,6 +262,9 @@ nav a.active {
     margin-bottom: 1rem;
 }
 
+.card .card-text{
+    color:#f7f7f7 !important;
+}
 
 /* --- About & Contact Layouts --- */
 
@@ -379,4 +401,14 @@ footer {
    .button1:hover {
     color: #000;
    }
+   .product-item.is-hidden {
+    display: none;
+  }
+  
+  .view-more-btn {
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+
   

@@ -41,7 +41,7 @@
     <section class="section container my-5">
         <h2 class="text-center mb-4">Shopping Cart</h2>
 
-        <div id="cart-items-container">
+        <div id="cart-items-container"  >
             <!-- Cart items will be dynamically inserted here -->
         </div>
 
@@ -55,15 +55,15 @@
                 <div class="col-md-6 offset-md-6">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">Order Summary</h5>
+                            <h5 class="card-text mb-3">Order Summary</h5>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Subtotal:</span>
-                                <span id="cart-subtotal">$0.00</span>
+                                <span class="card-text">Subtotal:</span>
+                                <span id="cart-subtotal" class="card-text">$0.00</span>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between mb-3">
-                                <strong>Total:</strong>
-                                <strong id="cart-total">$0.00</strong>
+                                <strong class="card-text">Total:</strong>
+                                <strong id="cart-total" class="card-text">$0.00</strong>
                             </div>
                             <a href="https://wa.me/263788510037 " target="_blank" rel="noopener noreferrer"  id="checkout-btn" class="btn btn-primary w-100">
                                 Checkout via WhatsApp
@@ -83,8 +83,8 @@
     </footer>
 
     <script>
-        // Display cart items
-        function displayCart() {
+        // Display cart items (make it globally accessible)
+        window.displayCart = function() {
             const cart = getCart();
             const cartItemsContainer = document.getElementById('cart-items-container');
             const emptyCartMessage = document.getElementById('empty-cart-message');
@@ -102,7 +102,13 @@
             emptyCartMessage.style.display = 'none';
             cartSummary.style.display = 'block';
             
-            cartItemsContainer.innerHTML = cartItems.map(item => `
+            cartItemsContainer.innerHTML = cartItems.map(item => {
+                // Ensure price and quantity are numbers
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 1;
+                const itemTotal = price * quantity;
+                
+                return `
                 <div class="card mb-3 border-0 shadow-sm">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -113,26 +119,29 @@
                                      style="max-height: 150px; object-fit: cover; width: 100%;">
                             </div>
                             <div class="col-12 col-md-5">
-                                <h5 class="card-title mb-2">${item.name}</h5>
-                                <p class="text-muted mb-0">$${item.price.toFixed(2)} each</p>
+                                <h5 class="card-text mb-2">${item.name}</h5>
+                                <p class="card-text mb-0">$${price.toFixed(2)} each</p>
                             </div>
                             <div class="col-12 col-md-2 mb-3 mb-md-0">
+                                <label class="card-text mb-1 d-block">Quantity</label>
                                 <div class="input-group">
                                     <button class="btn btn-outline-secondary" 
                                             type="button" 
-                                            onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                                            onclick="updateCartQuantity('${item.id}', ${quantity - 1})">-</button>
                                     <input type="number" 
-                                           class="form-control text-center" 
-                                           value="${item.quantity}" 
+                                           id="qty-input-${item.id}"
+                                           class="form-control text-center qty" 
+                                           value="${quantity}" 
                                            min="1"
+                                           style="width: 80px;"
                                            onchange="updateCartQuantity('${item.id}', this.value)">
                                     <button class="btn btn-outline-secondary" 
                                             type="button" 
-                                            onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                                            onclick="updateCartQuantity('${item.id}', ${quantity + 1})">+</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-2 text-md-end">
-                                <p class="fw-bold mb-2">$${(item.price * item.quantity).toFixed(2)}</p>
+                                <p class="card-text mb-2">$${itemTotal.toFixed(2)}</p>
                                 <button class="btn btn-sm btn-outline-danger" 
                                         onclick="removeFromCart('${item.id}')">
                                     Remove
@@ -141,32 +150,57 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
             
             updateCartTotal();
         }
         
-        // Update cart total
-        function updateCartTotal() {
-            const total = getCartTotal();
-            document.getElementById('cart-subtotal').textContent = `$${total.toFixed(2)}`;
-            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
-            
-            // Update WhatsApp checkout link with cart items
+        // Update cart total (make it globally accessible)
+        window.updateCartTotal = function() {
             const cart = getCart();
             const cartItems = Object.values(cart);
-            const itemsText = cartItems.map(item => 
-                `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`
-            ).join('%0A');
-            const totalText = `Total: $${total.toFixed(2)}`;
-            const message = `Hi MUSE, I'd like to order:%0A%0A${itemsText}%0A%0A${totalText}`;
+            const total = getCartTotal();
             
-            document.getElementById('checkout-btn').href = `https://wa.me/263788510037?text=${message}`;
+            // Debug: log cart contents
+            console.log('Cart items:', cartItems);
+            console.log('Cart total:', total);
+            
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            if (subtotalEl) {
+                subtotalEl.textContent = `$${total.toFixed(2)}`;
+            }
+            if (totalEl) {
+                totalEl.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            // Update WhatsApp checkout link with cart items
+            if (checkoutBtn) {
+                const cart = getCart();
+                const cartItems = Object.values(cart);
+                const itemsText = cartItems.map(item => 
+                    `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`
+                ).join('%0A');
+                const totalText = `Total: $${total.toFixed(2)}`;
+                const message = `Hi MUSE, I'd like to order:%0A%0A${itemsText}%0A%0A${totalText}`;
+                
+                checkoutBtn.href = `https://wa.me/263788510037?text=${message}`;
+            }
         }
         
-        // Initialize cart display
-        displayCart();
-        updateCartCount();
+        // Initialize cart display when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                displayCart();
+                updateCartCount();
+            });
+        } else {
+            displayCart();
+            updateCartCount();
+        }
     </script>
 
 </body>

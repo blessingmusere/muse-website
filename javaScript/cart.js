@@ -74,13 +74,26 @@ function updateCartQuantity(productId, quantity) {
     }
     
     if (cart[productId]) {
-        cart[productId].quantity = parseInt(quantity);
+        const newQuantity = parseInt(quantity);
+        cart[productId].quantity = newQuantity;
         saveCart(cart);
         updateCartCount();
         
-        // If on cart page, update total
+        // If on cart page, update input field immediately and refresh display
         if (window.location.pathname.includes('cart.html')) {
-            updateCartTotal();
+            // Update the input field value immediately for better UX
+            const qtyInput = document.getElementById(`qty-input-${productId}`);
+            if (qtyInput) {
+                qtyInput.value = newQuantity;
+            }
+            
+            // Refresh the entire cart display to update totals and prices
+            if (typeof window.displayCart === 'function') {
+                window.displayCart();
+            } else if (typeof window.updateCartTotal === 'function') {
+                // Fallback: just update total if displayCart isn't available
+                window.updateCartTotal();
+            }
         }
     }
 }
@@ -99,7 +112,9 @@ function getCartItemCount() {
 function getCartTotal() {
     const cart = getCart();
     return Object.values(cart).reduce((total, item) => {
-        return total + (item.price * item.quantity);
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.quantity) || 0;
+        return total + (price * quantity);
     }, 0);
 }
 
@@ -191,10 +206,51 @@ function initCart() {
                                card?.querySelector('.card-title')?.textContent?.trim() || 
                                'Product';
             
-            // Get price from card
-            const priceElement = card?.querySelector('.fw-bold');
+            // Get price from card - try multiple selectors in order of specificity
+            let priceElement = null;
+            
+            // Try specific price selectors first
+            priceElement = card?.querySelector('.fw-bold') || 
+                          card?.querySelector('.card-text.price') ||
+                          card?.querySelector('.price');
+            
+            // If not found, look for card-text elements that contain a dollar sign
+            // (but not the description, which comes before the price)
+            if (!priceElement) {
+                const cardTextElements = card?.querySelectorAll('.card-text');
+                if (cardTextElements) {
+                    // The price is usually the last or second-to-last card-text before the button
+                    // Look for one that contains a dollar sign
+                    for (let i = cardTextElements.length - 1; i >= 0; i--) {
+                        const text = cardTextElements[i].textContent?.trim() || '';
+                        if (text.includes('$') && /^\$?\d+/.test(text)) {
+                            priceElement = cardTextElements[i];
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Last resort: find any element with dollar sign and numbers
+            if (!priceElement) {
+                const allElements = card?.querySelectorAll('div, span, p');
+                if (allElements) {
+                    for (let el of allElements) {
+                        const text = el.textContent?.trim() || '';
+                        // Check if it looks like a price (starts with $ and has numbers)
+                        if (/^\$?\d+/.test(text) && text.length < 20) {
+                            priceElement = el;
+                            break;
+                        }
+                    }
+                }
+            }
+            
             const priceText = priceElement?.textContent?.trim() || '0';
             const productPrice = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
+            
+            // Debug logging
+            console.log('Product:', productId, 'Price extracted:', productPrice, 'from text:', priceText);
             
             // Get image from card
             const productImage = card?.querySelector('img')?.getAttribute('src') || '';

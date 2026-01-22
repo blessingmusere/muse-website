@@ -8,33 +8,45 @@
     <link rel="icon" type="image/png" href="images/muse logo (8).png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="javaScript/cart.js"></script>
 </head>
 
 <body>
 
     <header>
-        <div class="logo">MUSE</div>
+        <div class="logo" style="cursor: pointer;" onclick="window.location.href='index.html'">MUSE</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shopTech.html">Shop</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="cart.html" class="cart-link">
+                        <span>View Cart</span>
+                        <span id="cart-count-badge" class="cart-badge" style="display: none;">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
     <section class="section container">
         <h2>About MUSE</h2>
-        <p>
-            MUSE started with one simple idea — people want good tech without paying inflated prices.
-            <br><br> We started small, sourcing products, testing them ourselves, and selling directly. No middlemen. No hype. Just accessories that work.
-            <br><br> Every product you see here is tested before sale and stocked locally. MUSE is built for people who value quality, honesty, and access.
-        </p>
-    </section>
+        <div class="about-content">
+            <p>
+                MUSE started with one simple idea — people want <strong>premium tech and essential clothing</strong> without paying inflated prices.
+            </p>
+            <p>
+                We started small, sourcing products, testing them ourselves, and selling directly. Whether it's a high-speed fast charger or a signature piece of apparel, we focus on the essentials: <strong>No middlemen. No hype. Just quality that works.</strong>
+            </p>
+            <p>
+                Every product you see here is hand-selected, tested before sale, and stocked locally. MUSE is built for people who value quality, honesty, and access.
+            </p>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 MUSE. Built for quality.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 MUSE. Built for quality.</p>
+        </footer>
 
 </body>
 

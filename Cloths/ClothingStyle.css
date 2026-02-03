@@ -1,0 +1,322 @@
+/* =========================
+   MUSE SHOES (TRANSPARENT CARDS)
+   ========================= */
+
+   .shoe-page{
+    padding-top: 10px; /* matches your header spacing */
+    padding-bottom: 60px;
+  }
+  
+  /* safe gutters on mobile */
+  .shoe-section{
+    max-width: 1100px;
+  }
+  
+  .shoe-header{
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  
+  .shoe-title{
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    color: #e9eef6;
+  }
+  
+  .shoe-subtitle{
+    margin: 8px 0 0;
+    color: rgba(233, 238, 246, 0.68);
+    font-size: 0.98rem;
+  }
+  
+  /* Transparent / glass card */
+  .shoe-card{
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .12s ease, border-color .12s ease;
+  }
+  
+  .shoe-card:hover{
+    transform: translateY(-2px);
+    border-color: rgba(106,169,255,0.28);
+  }
+  
+  /* top media area */
+  .shoe-media{
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background:
+      radial-gradient(220px 140px at 25% 25%, rgba(106,169,255,.22), transparent 60%),
+      radial-gradient(220px 180px at 80% 25%, rgba(155,123,255,.20), transparent 60%),
+      radial-gradient(200px 200px at 65% 85%, rgba(61,220,151,.12), transparent 65%),
+      rgba(255,255,255,.03);
+  }
+  
+  .shoe-media.alt{
+    background:
+      radial-gradient(220px 140px at 25% 25%, rgba(155,123,255,.22), transparent 60%),
+      radial-gradient(220px 180px at 80% 25%, rgba(106,169,255,.20), transparent 60%),
+      radial-gradient(200px 200px at 65% 85%, rgba(61,220,151,.10), transparent 65%),
+      rgba(255,255,255,.03);
+  }
+  
+  .shoe-media.alt2{
+    background:
+      radial-gradient(220px 140px at 25% 25%, rgba(61,220,151,.18), transparent 60%),
+      radial-gradient(220px 180px at 80% 25%, rgba(155,123,255,.18), transparent 60%),
+      radial-gradient(200px 200px at 65% 85%, rgba(106,169,255,.14), transparent 65%),
+      rgba(255,255,255,.03);
+  }
+  
+  /* If you later use real images */
+  .shoe-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* badge */
+  .shoe-badge{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #e9eef6;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .shoe-badge.warn{
+    border-color: rgba(255,204,102,0.35);
+  }
+  
+  .shoe-badge.hot{
+    border-color: rgba(255,92,122,0.35);
+  }
+  
+  /* content */
+  .shoe-body{
+    padding: 14px 14px 16px;
+  }
+  
+  .shoe-top{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .shoe-name{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e9eef6;
+    line-height: 1.25;
+  }
+  
+  .shoe-price{
+    font-weight: 800;
+    color: #e9eef6;
+    white-space: nowrap;
+  }
+  
+  /* description */
+  .shoe-desc{
+    margin: 10px 0 0;
+    color: rgba(233, 238, 246, 0.65);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+  
+  /* actions */
+  .shoe-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  
+  .shoe-btn{
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #07101b;
+    background: linear-gradient(135deg, #6aa9ff, #9b7bff);
+    box-shadow: 0 14px 30px rgba(106,169,255,0.14);
+    transition: transform .12s ease, filter .12s ease;
+  }
+  
+  .shoe-btn:hover{
+    transform: translateY(-1px);
+    filter: saturate(1.05);
+  }
+  
+  .shoe-btn.ghost{
+    flex: 0 0 auto;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.06);
+    color: #e9eef6;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: none;
+  }
+  
+  /* mobile spacing (cards not touching edges) */
+  @media (max-width: 576px){
+    .shoe-page{
+      padding-top: 100px;
+    }
+    .shoe-section{
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+  /* =========================
+   SHOE VIEW MODAL
+   ========================= */
+
+.shoe-modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.shoe-modal-overlay.active{
+  display: flex;
+}
+
+.shoe-modal{
+  width: min(420px, 92%);
+  background: linear-gradient(180deg, rgba(16,20,26,.98), rgba(11,13,16,.98));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 22px;
+  padding: 20px;
+  color: #e9eef6;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  position: relative;
+}
+
+.shoe-modal-close{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #e9eef6;
+  cursor: pointer;
+}
+
+.shoe-modal h3{
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.modal-price{
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.modal-desc{
+  color: rgba(233,238,246,.7);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.modal-actions{
+  margin-top: 16px;
+}
+/* ===== Shoe modal image ===== */
+
+.shoe-modal-media{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.shoe-modal-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   FULL-WIDTH EDGE-ALIGNED GRID (Nike/Apple style)
+   ========================= */
+
+/* Full-width section with controlled gutters */
+.shoe-section--full{
+  width: 100%;
+  margin: 0;
+  padding-left: 18px;   /* mobile gutter */
+  padding-right: 18px;
+  max-width: none;      /* kill any max-width centering */
+}
+
+/* Desktop gutters feel premium */
+@media (min-width: 992px){
+  .shoe-section--full{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Large desktop: slightly bigger breathing room */
+@media (min-width: 1400px){
+  .shoe-section--full{
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/* Ensure 3 per row on desktop + bigger cards */
+@media (min-width: 992px){
+  .shoe-grid .col-md-4{
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+
+  /* make cards feel “bigger” (more height + spacing) */
+  .shoe-media{
+    aspect-ratio: 16 / 10; /* more cinematic like Apple product blocks */
+  }
+
+  .shoe-body{
+    padding: 18px 18px 20px;
+  }
+
+  .shoe-name{
+    font-size: 1.05rem;
+  }
+
+  .shoe-price{
+    font-size: 1.05rem;
+  }
+}

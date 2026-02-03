@@ -273,6 +273,13 @@ nav a.active {
     color:#f7f7f7 !important;
 }
 
+/* Trending products on muse.html: keep name, price, description white */
+#trendingProducts .card-title,
+#trendingProducts .card-text,
+#trendingProducts .fw-bold {
+    color: #fff !important;
+}
+
 /* --- About & Contact Layouts --- */
 
 .container {
@@ -764,4 +771,4 @@ nav.popup-window ul {
       overflow: hidden;
     }
   }
-  
+ 

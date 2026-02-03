@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSE | Premium Essentials</title>
+    <link rel="icon" type="image/png" href="images/muse logo (8).png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ClothingStyle.css">
+    <link rel="stylesheet" href="../Style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../javaScript/cart.js"></script>
+</head>
+
+<body>
+    
+    <header>
+        <div class="site-logo" style="cursor: pointer;" onclick="window.location.href='../muse.html'">
+            <img 
+                src="../images/muse logo1 (8).png"
+                alt="MUSE Logo"
+                class="site-logo"
+            >
+        </div>
+        <nav>
+
+            <!--Menu Button-->
+            <label class="popup">
+                <input type="checkbox">
+            
+                <div class="burger" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            
+                <nav class="popup-window">
+                    <ul>
+                        <!--<li><a href="index.html" class="active">Home</a></li>-->
+                        <li><a href="../shopTech.html">Tech Shop</a></li>
+                        <!--<li><a href="shopClothing.html">Clothing Shop</a></li>-->
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </nav>
+            </label>
+            <!-- Cart -->
+            <div class="nav-icons">
+                <a href="cart.html" class="cart-btn" aria-label="View cart">
+                  
+                  <!-- Cart icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 24 24"
+                       width="16" height="16"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+              
+                  <!-- Cart count badge -->
+                  <span id="cart-count-badge" class="cart-badge" aria-hidden="true">0</span>
+                </a>
+              </div>
+        </nav>
+    </header>
+
+    <main class="shoe-page">
+        <section class="container-fluid shoe-section shoe-section--full">
+          <div class="shoe-header">
+            <h2 class="shoe-title">Shoes</h2>
+            <p class="shoe-subtitle">Premium picks — clean design, limited pairs.</p>
+            <p class="shoe-subtitle">Sizes 6-10</p>
+          </div>
+          
+          <div class="row g-4 shoe-grid">
+            <!-- Card 1 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="sb-dunks-1" data-product-name="SB Dunks">
+              <div class="shoe-card">
+                <div class="shoe-media">
+                <img src="images/SB dunk.jpeg" class="shoe-img" alt="SB dunks">
+                  <span class="shoe-badge">New</span>
+                </div>
+      
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">SB Dunks </h3>
+                    <span class="shoe-price">$25.00</span>
+                  </div>
+      
+                  <p class="shoe-desc">Lightweight comfort with a clean street-ready silhouette.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="sb-dunks-1">Add to cart</a>
+                    
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="SB Dunks"
+                      data-price="$25.00"
+                      data-desc="Lightweight comfort with a clean street-ready silhouette."
+                      data-img="images/SB dunk.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="sb-dunks-white" data-product-name="SB Dunks — White">
+              <div class="shoe-card">
+                <div class="shoe-media alt">
+                  <img src="images/SB dunkss.jpeg" class="shoe-img" alt="SB dunks">
+                  <span class="shoe-badge warn">Limited</span>
+                  
+                </div>
+                
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">SB Dunks — White</h3>
+                    <span class="shoe-price">$25.00</span>
+
+                  </div>
+                  
+                  <p class="shoe-desc">Minimal white sneaker with durable stitching and a premium feel.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="sb-dunks-white">Add to cart</a>
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="SB Dunks"
+                      data-price="$25.00"
+                      data-desc="Lightweight comfort with a clean street-ready silhouette."
+                      data-img="images/SB dunkss.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="jordan-3-grey" data-product-name="Jordan 3's">
+              <div class="shoe-card">
+                <div class="shoe-media alt2">
+                  <img src="images/J3.jpeg" class="shoe-img" alt="Jordan 3's">
+                  <span class="shoe-badge hot">Hot</span>
+                </div>
+      
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">Jordan 3's </h3>
+                    <span class="shoe-price">$35.00</span>
+                  </div>
+      
+                  <p class="shoe-desc">High-top support with a muted grey tone that matches everything.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="jordan-3-grey">Add to cart</a>
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="Jordan 3's"
+                      data-price="$35.00"
+                      data-desc="High-top support with a muted grey tone that matches everything."
+                      data-img="images/J3.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="jordan-3-alt" data-product-name="Jordan 3's">
+              <div class="shoe-card">
+                <div class="shoe-media alt2">
+                  <img src="images/J33.jpeg" class="shoe-img" alt="Jordan 3's">
+                  <span class="shoe-badge hot">Hot</span>
+                </div>
+      
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">Jordan 3's </h3>
+                    <span class="shoe-price">$35.00</span>
+                  </div>
+      
+                  <p class="shoe-desc">High-top support with a muted grey tone that matches everything.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="jordan-3-alt">Add to cart</a>
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="Jordan 3's"
+                      data-price="$35.00"
+                      data-desc="High-top support with a muted grey tone that matches everything."
+                      data-img="images/J33.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Card 5 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="jordan-3-white" data-product-name="Jordan 3's">
+              <div class="shoe-card">
+                <div class="shoe-media alt2">
+                  <img src="images/J333.jpeg" class="shoe-img" alt="Jordan 3's">
+                  <span class="shoe-badge hot">Hot</span>
+                </div>
+      
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">Jordan 3's </h3>
+                    <span class="shoe-price">$35.00</span>
+                  </div>
+      
+                  <p class="shoe-desc">White with a bit of bright and patterns. Slay at your best.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="jordan-3-white">Add to cart</a>
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="Jordan 3's"
+                      data-price="$35.00"
+                      data-desc="White with a bit of bright and patterns. Slay at your best."
+                      data-img="images/J333.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-12 col-md-4 product-item" data-product-id="jordan-1" data-product-name="Jordan 1's">
+              <div class="shoe-card">
+                <div class="shoe-media alt2">
+                  <img src="images/J1.jpeg" class="shoe-img" alt="Jordan 1's">
+                  <span class="shoe-badge hot">Trending</span>
+                </div>
+      
+                <div class="shoe-body">
+                  <div class="shoe-top">
+                    <h3 class="shoe-name">Jordan 1's </h3>
+                    <span class="shoe-price">$20.00</span>
+                  </div>
+      
+                  <p class="shoe-desc">Pick from a variety of colors that match your style | The perfect combo.</p>
+      
+                  <div class="shoe-actions">
+                    <a href="#" class="shoe-btn order-btn" data-product-id="jordan-1">Add to cart</a>
+                    <button class="shoe-btn ghost view-btn"
+                      data-name="Jordan 1's"
+                      data-price="$20.00"
+                      data-desc="Pick from a variety of colors that match your style | The perfect combo."
+                      data-img="images/J1.jpeg">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <p class="shoe-subtitle" style="text-align: center; margin: 30px;">More products coming  soon...</p>
+      </main>
+    
+
+    <footer>
+        <p>&copy; 2025 MUSE. Built for quality.</p>
+    </footer>
+
+</body>
+<!-- Shoe Quick View Modal -->
+<div class="shoe-modal-overlay" id="shoeModal">
+  <div class="shoe-modal">
+    <button class="shoe-modal-close" id="closeShoeModal">✕</button>
+
+    <!-- IMAGE -->
+    <div class="shoe-modal-media">
+      <img id="modalImg" alt="Shoe preview">
+    </div>
+
+    <!-- TEXT -->
+    <h3 id="modalName"></h3>
+    <p class="modal-price" id="modalPrice"></p>
+    <p class="modal-desc" id="modalDesc"></p>
+
+    <div class="modal-actions">
+      <a href="cart.html" class="shoe-btn">Add to cart</a>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("shoeModal");
+    const closeBtn = document.getElementById("closeShoeModal");
+  
+    const nameEl = document.getElementById("modalName");
+    const priceEl = document.getElementById("modalPrice");
+    const descEl = document.getElementById("modalDesc");
+    const imgEl = document.getElementById("modalImg");
+  
+    document.querySelectorAll(".view-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        nameEl.textContent = btn.dataset.name;
+        priceEl.textContent = btn.dataset.price;
+        descEl.textContent = btn.dataset.desc;
+        imgEl.src = btn.dataset.img;
+  
+        modal.classList.add("active");
+      });
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+  
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+  
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.classList.remove("active");
+      }
+    });
+  });
+  </script>
+  <script src="../javaScript/products.js"></script>
+  <script src="../javaScript/trending.js"></script>
+</html>

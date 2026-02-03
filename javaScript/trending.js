@@ -32,19 +32,19 @@ function initShopTracking() {
   });
 }
 
-// ---------- INDEX: Card HTML ----------
+// ---------- INDEX: Card HTML (matches shopTech structure so cart.js works) ----------
 function productCardHTML(p) {
   const priceText = `$${Number(p.price).toFixed(2)}`;
 
   return `
-    <div class="col-6 col-md-4 col-lg-3">
+    <div class="col-6 col-md-4 col-lg-3" data-product-id="${p.id}" data-product-name="${p.name}">
       <div class="card h-100 border-0 shadow-sm product-card-modern">
         <img src="${p.image}" class="card-img-top" alt="${p.name}">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-text">${p.name}</h5>
+          <h5 class="card-title">${p.name}</h5>
           <p class="card-text text-muted small">${p.description}</p>
-          <div class="card-text mb-3">${priceText}</div>
-          <a href="${p.whatsapp}"
+          <div class="fw-bold mb-3">${priceText}</div>
+          <a href="#"
              class="btn btn-primary mt-auto w-100 order-btn"
              data-product-id="${p.id}">
             Add to cart

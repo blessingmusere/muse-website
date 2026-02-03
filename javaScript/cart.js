@@ -204,13 +204,15 @@ function initCart() {
             const card = orderBtn.closest('.col-6, .col-12, .col-md-4, .col-md-6, .col-lg-3, .col-lg-4');
             const productName = card?.getAttribute('data-product-name') || 
                                card?.querySelector('.card-title')?.textContent?.trim() || 
+                               card?.querySelector('.shoe-name')?.textContent?.trim() ||
                                'Product';
             
             // Get price from card - try multiple selectors in order of specificity
             let priceElement = null;
             
-            // Try specific price selectors first
+            // Try specific price selectors first (shopTech + clothing/shoe cards)
             priceElement = card?.querySelector('.fw-bold') || 
+                          card?.querySelector('.shoe-price') ||
                           card?.querySelector('.card-text.price') ||
                           card?.querySelector('.price');
             

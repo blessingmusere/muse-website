@@ -50,12 +50,77 @@ window.MUSE_PRODUCTS = [
     {
         id: "flash-drive",
         name: "Flash Drive",
-        description: " Simple, reliable storage for documents, media, and backups.",
+        description: "Simple, reliable storage for documents, media, and backups.",
         price: 12.0,
         image: "images/flashdrive.jpg",
         whatsapp:
           "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
     },
     // Add the rest of your products here...
+    //shoes
+    {
+      id: "sb-dunks-1",
+      name: "SB Dunks",
+      description: "Lightweight comfort with a clean street-ready silhouette.",
+      price: 25.0,
+      image: "Cloths/images/SB dunk.jpeg",
+      whatsapp:
+        "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+  },
+  {
+    id: "sb-dunks-white",
+    name: "SB Dunks — White",
+    description: "Minimal white sneaker with durable stitching and a premium feel.",
+    price: 25.0,
+    image: "Cloths/images/SB dunkss.jpeg",
+    whatsapp:
+      "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+{
+  id: "jordan-3-grey",
+  name: "Jordan 3's",
+  description: "High-top support with a muted grey tone that matches everything.",
+  price: 35.0,
+  image: "Cloths/images/J3.jpeg",
+  whatsapp:
+    "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+{
+  id: "jordan-3-alt",
+  name: "Jordan 3's",
+  description: "High-top support with a muted grey tone that matches everything.",
+  price: 35.0,
+  image: "Cloths/images/J33.jpeg",
+  whatsapp:
+    "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+{
+  id: "jordan-3-white",
+  name: "Jordan 3's",
+  description: "White with a bit of bright and patterns. Slay at your best.",
+  price: 35.0,
+  image: "Cloths/images/J333.jpeg",
+  whatsapp:
+    "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+{
+  id: "jordan-1",
+  name: "Jordan 1's",
+  description: "Pick from a variety of colors that match your style | The perfect combo.",
+  price: 20.0,
+  image: "Cloths/images/J1.jpeg",
+  whatsapp:
+    "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+{
+  id: "gamin-mouse",
+  name: "Gaming Mouse",
+  description: "LogiTech G304, upto 12000 DPI, 1ms response time, 250hours battery life.",
+  price: 10.0,
+  image: "images/mouse_product_card.png",
+  whatsapp:
+    "https://wa.me/263788510037?text=Hi%20MUSE,%20I'm%20interested%20in%20the%2065W%20Charger"
+},
+
   ];
   

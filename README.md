@@ -3,7 +3,7 @@
 Premium tech and clothing essentials storefront built with plain HTML, CSS, and JavaScript. It includes a landing page, tech shop, clothing shop, localStorage-backed cart, and WhatsApp checkout handoff.
 
 ### What's inside
-- **Landing page (`muse.html`)** with hero CTA buttons and a "Trending" section that updates based on user click activity.
+- **Landing page (`index.html`)** with hero CTA buttons and a "Trending" section that updates based on user click activity.
 - **Tech shop (`shopTech.html`)** listing top-selling items with Add to Cart buttons.
 - **Clothing shop** – `shopp.html` and **`Cloths/shopClothing.html`** (shoes, etc.) with `Cloths/ClothingStyle.css`.
 - **Cart** – root `cart.html` and **`Cloths/cart.html`**; both show items, quantity controls, totals, and WhatsApp checkout link.
@@ -23,16 +23,16 @@ Premium tech and clothing essentials storefront built with plain HTML, CSS, and 
    `git clone https://github.com/blessingmusere/muse-website.git`
 2. Checkout the branch:  
    `cd muse-website && git checkout Ronaldo`
-3. Open `muse.html` in your browser (or use a static server like VS Code "Live Server").
+3. Open `index.html` in your browser (or use a static server like VS Code "Live Server").
 
 ### Key files
-- `muse.html` – landing with hero and trending grid.
+- `index.html` – landing with hero and trending grid.
 - `shopTech.html` – tech product listing (Add to Cart uses `.order-btn` + `data-product-id`).
 - `shopp.html` – clothing shop; `Cloths/shopClothing.html` – shoes/clothing grid.
 - `cart.html` – main cart; `Cloths/cart.html` – clothing cart.
 - `about.html` – about page.
 - `javaScript/products.js` – array of `{ id, name, description, price, image, whatsapp }`.
-- `javaScript/trending.js` – click tracking + trending rendering on `muse.html`.
+- `javaScript/trending.js` – click tracking + trending rendering on `index.html`.
 - `javaScript/cart.js` – cart storage, badge updates, notifications.
 - `style.css` – global theme, layout, responsive; `Cloths/ClothingStyle.css` – clothing styles.
 
